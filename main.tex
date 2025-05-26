@@ -1,0 +1,595 @@
+%
+%Academic CV LaTeX Template
+% Author: Dubasi Pavan Kumar
+% LinkedIn: https://www.linkedin.com/in/im-pavankumar/
+% License: MIT
+%
+% For errors, suggestions, or improvements, please contact:
+% Email: pavankumard.pg19.ma@nitp.ac.in
+%
+
+
+
+\documentclass[a4paper,11pt]{article}
+
+% Package imports
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
+
+% Color definitions
+\definecolor{darkblue}{RGB}{0,0,139}
+
+% Page layout
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
+\setlength{\footskip}{5pt} % Addressing fancyhdr warning
+
+% Hyperlink setup (moved after fancyhdr to address warning)
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=darkblue,
+    urlcolor=darkblue,
+}
+
+% Custom box settings
+\usepackage[most]{tcolorbox}
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=4pt,
+    arc=0pt,outer arc=0pt,
+}
+
+% URL style
+\urlstyle{same}
+
+% Text alignment
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.5mm]}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+
+% Commands for icon sizing and positioning
+\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
+\newcommand{\ieeeicon}[1]{\raisebox{-0.3em}{\resizebox{!}{1.3em}{#1}}}
+
+% Font options
+\newcommand{\headerfonti}{\fontfamily{phv}\selectfont} % Helvetica-like (similar to Arial/Calibri)
+\newcommand{\headerfontii}{\fontfamily{ptm}\selectfont} % Times-like (similar to Times New Roman)
+\newcommand{\headerfontiii}{\fontfamily{ppl}\selectfont} % Palatino (elegant serif)
+\newcommand{\headerfontiv}{\fontfamily{pbk}\selectfont} % Bookman (readable serif)
+\newcommand{\headerfontv}{\fontfamily{pag}\selectfont} % Avant Garde-like (similar to Trebuchet MS)
+\newcommand{\headerfontvi}{\fontfamily{cmss}\selectfont} % Computer Modern Sans Serif
+\newcommand{\headerfontvii}{\fontfamily{qhv}\selectfont} % Quasi-Helvetica (another Arial/Calibri alternative)
+\newcommand{\headerfontviii}{\fontfamily{qpl}\selectfont} % Quasi-Palatino (another elegant serif option)
+\newcommand{\headerfontix}{\fontfamily{qtm}\selectfont} % Quasi-Times (another Times New Roman alternative)
+\newcommand{\headerfontx}{\fontfamily{bch}\selectfont} % Charter (clean serif font)
+
+\begin{document}
+\headerfontiii
+
+% Header
+\begin{center}
+    {\Huge\textbf{Laxmi Narayan Sahu}}
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    \small{
+    +91-9777983839 | \href{mailto:youremail@example.com}{laxminarayanasahu2@gmail.com} | 
+    \href{https://www.yourwebsite.com/}{https://portfolio-wheat-nine-42.vercel.app/}
+    }
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    \small{
+    \socialicon{\faLinkedin} \href{https://www.linkedin.com/in/your-profile/}{https://www.linkedin.com/in/laxmi-narayana-sahu-05a657237/} | 
+    \socialicon{\faGithub} \href{https://github.com/your-username}{https://github.com/Lns9777} | 
+    % \ieeeicon{\includegraphics[height=1.3em]{ieee_collabratec_icon.png}} \href{https://ieee-collabratec.ieee.org/app/p/your-profile}{your-profile} |
+    % \socialicon{\faTwitter} \href{https://twitter.com/your-handle}{your-handle}
+    }
+\end{center}
+\vspace{-6mm}
+\begin{center}
+    \small{Defence Colony, near Radha Krishna Temple, Berhampur, Ganjam, Odisha - 760007}
+\end{center}
+
+\vspace{-4mm}
+
+\section{\textbf{Objective}}
+\vspace{1mm}
+\small{
+Motivated AI/ML Developer with 1 year of full-time experience as an Associate Technology L1, specializing in Generative AI, NLP, and Computer Vision. Adept at building intelligent systems using Python, TensorFlow, OpenCV, and modern AI frameworks. Proven ability to deliver scalable AI solutions, with a strong background in full-stack development and a passion for leveraging AI to solve real-world problems. Seeking to contribute to innovative, high-impact projects in a forward-thinking organization.
+}
+\vspace{-2mm}
+
+
+
+\section{\textbf{Experience}}
+\vspace{-0.4mm}
+  \resumeSubHeadingListStart
+  \resumeSubheading
+      {{Pravaah Consulting [\href{https://www.pravaahconsulting.com/}{\faIcon{globe}}]}}{Remote}
+      {Associate Technology L1 (AI/ML Developer)}{Jun 2024 - Present}
+      \resumeItemListStart
+      \item Collaborating on diverse, internal, and client-specific projects with a focus on Generative AI, AI Agents, and contributing to solutions that leverage cutting-edge AI models for innovative applications.
+  % \item Developed and deployed multiple AI-powered chatbots leveraging LangChain and other AI frameworks to automate customer interactions, improving user engagement and response accuracy.
+  % \item Built custom intelligent agents for diverse business use cases, enhancing automation capabilities and reducing manual workload.
+  % \item Designed and integrated complex conversational workflows using LangChain, resulting in streamlined processes and faster query resolution.
+  % \item Collaborated with cross-functional teams to implement scalable AI solutions, ensuring seamless integration with existing applications and platforms.
+      \resumeItemListEnd 
+  % \resumeSubheading
+    % {Company B [\href{https://www.companyb.com}{\faIcon{globe}}]}{Remote}
+    % {Job Title B}{Month Year - Month Year}
+    % \resumeItemListStart
+      % \item Engineered a [specific system/model], improving [specific metric] by [percentage]
+      % \item Developed [specific tool/method], increasing [specific aspect] by [percentage]
+      % \item Implemented [specific system], reducing [specific metric] by [percentage]
+      % \item Conducted [specific test/analysis] to validate [specific aspect]
+    % \resumeItemListEnd
+  \resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{\textbf{Education}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{The Neotia University}{Kolkata, India}
+{B-Tech Computer Science and Engineering}{Sept 2021 - Jun 2025}
+\resumeItemListStart
+\item CGPA: 8.53
+\resumeItemListEnd
+
+\resumeSubheading
+{De Paul School}{Berhampur, India}
+{Senior Secondary Education}{Jul 2021}
+\resumeItemListStart
+\item Grade: 83.0\%
+\resumeItemListEnd
+
+% \resumeSubheading
+% {High School Name}{City, Country}
+% {Secondary Education}{Month Year}
+% \resumeItemListStart
+% \item GPA: X.X/10
+% \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{\textbf{Projects}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeProject
+  {Potfolio: [Showcasing my skills, projects, certifications, and professional journey.]}
+  {Tools: [HTML, CSS, JavaScript(JS)]}
+  {April 2024}
+  {{
+    [\href{https://github.com/Lns9777/Portfolio}{\textcolor{darkblue}{\faGithub}}]
+    [\href{https://portfolio-wheat-nine-42.vercel.app/}{\textcolor{darkblue}{\faLink}}]
+  }}
+\resumeItemListStart
+    \item Uses advanced image processing and machine learning algorithms to identify and decode speech from visual input, focusing on the shape and movement of the lips.
+    \item Provides real-time lip-reading capabilities, with applications in accessibility for the hearing-impaired, silent communication, and security.
+  % \item Developed [specific feature/system] for [specific purpose]
+  % \item Implemented [specific technology] for [specific goal], achieving [specific result]
+  % \item Created [specific component], ensuring [specific benefit]
+  % \item Applied [specific method] to analyze [specific aspect]
+\resumeItemListEnd
+\resumeProject
+  {Lip Reading: [AI system interprets spoken words by analyzing lip movements visually.]}
+  {Tools: [Streamlit, OpenCV, Python, Computer Vision]}
+  {April 2024}
+  {{
+    [\href{https://github.com/Lns9777/LipReading}{\textcolor{darkblue}{\faGithub}}]
+    [\href{https://lipreading-lns.streamlit.app/}{\textcolor{darkblue}{\faLink}}]
+  }}
+\resumeItemListStart
+    \item Uses advanced image processing and machine learning algorithms to identify and decode speech from visual input, focusing on the shape and movement of the lips.
+    \item Provides real-time lip-reading capabilities, with applications in accessibility for the hearing-impaired, silent communication, and security.
+  % \item Developed [specific feature/system] for [specific purpose]
+  % \item Implemented [specific technology] for [specific goal], achieving [specific result]
+  % \item Created [specific component], ensuring [specific benefit]
+  % \item Applied [specific method] to analyze [specific aspect]
+\resumeItemListEnd
+
+\resumeProject
+  {Traffic Sign Detection: [Streamlit app classifying traffic signs to support smart vehicle navigation.]}
+  {Tools: [Python, Streamlit, CNN]}
+  {Oct 2023}
+  {{
+    [\href{https://github.com/Lns9777/Traffic-Light-Detection}{\textcolor{darkblue}{\faGithub}}]
+    [\href{https://traffic-sign-detection-lns.streamlit.app/}{\textcolor{darkblue}{\faLink}}]
+  }}
+\resumeItemListStart
+    \item This system uses image classification with Convolutional Neural Networks (CNN) to recognize various traffic signs accurately, helping vehicles respond appropriately based on the detected sign.
+    \item Provides a user-friendly interface for easy image upload and sign identification, making it practical for real-world applications.
+  % \item Developed [specific model/system], achieving [specific metric]
+  % \item Implemented [specific feature], processing [specific volume] of data
+  % \item Created [specific visualization] for [specific purpose]
+  % \item Developed [specific component] for easy integration with [specific system]
+\resumeItemListEnd
+
+\resumeProject
+  {Travel Recommendation System: [Django app giving personalized travel suggestions based on user input.]}
+  {Tools: [HTML, CSS, NLP, Django]}
+  {April 2024}
+  {{
+    [\href{https://github.com/Lns9777/Travel-Recommendation-System-Using-Django}{\textcolor{darkblue}{\faGithub}}]
+    % [\href{https://traffic-sign-detection-lns.streamlit.app/}{\textcolor{darkblue}{\faLink}}]
+  }}
+\resumeItemListStart
+    \item This system analyzes users' previously visited destinations or their preferences across various categories to suggest ideal travel locations.
+    \item Integrated Natural Language Processing (NLP) for accurate recommendation analysis, creating a customized travel experience for users.
+    \item Integrated a hotel recommendation system that suggests suitable accommodations based on user-provided destination, check-in/check-out dates, and budget, enhancing travel planning efficiency and personalization.
+  % \item Developed [specific model/system], achieving [specific metric]
+  % \item Implemented [specific feature], processing [specific volume] of data
+  % \item Created [specific visualization] for [specific purpose]
+  % \item Developed [specific component] for easy integration with [specific system]
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+% \section{\textbf{Patents and Publications} \hfill \textcolor{darkblue}{\scriptsize C=Conference, J=Journal, P=Patent, S=In Submission, T=Thesis}}
+% \vspace{0.2mm}
+% \small{
+% \begin{enumerate}[leftmargin=*, labelsep=0.5em, align=left, widest={[\textbf{S.1}]}, itemindent=0em, label={\textbf{[\arabic*]}]}]
+% \item[\textbf{[C.1]}] Your Name, et al. (Year). \href{https://doi.org/XX.XXXX/XXXXXXX.XXXX.XXXXXXX}{\textbf{Title of Conference Paper}}. In \textit{Name of Conference Proceedings}, pp. XX-XX. Publisher. Date, Location. DOI: XX.XXXX/XXXXXXX.XXXX.XXXXXXX
+
+% \item[\textbf{[S.1]}] Your Name, et al. (Year). \textbf{Title of Submitted Paper}. Manuscript submitted for publication in \textit{Journal Name}.
+
+% \item[\textbf{[P.1]}] Inventor 1, Your Name, Inventor 3, et al. (Year). \href{https://patentoffice.gov/patent/XXXXXXXXX}{\textbf{Title of Patent}}. Patent Office, Patent No. XXXXXXXXX. Registration Date: Date, Grant Date: Date, Publication Date: Date.
+
+% \item[\textbf{[J.1]}] Author 1, Your Name, Author 3, et al. (Year). \href{https://doi.org/XX.XXXX/XXXXX.XXXX.XXXXXXX}{\textbf{Title of Journal Article}}. \textit{Journal Name}, Vol. XX, Issue X, pp. XXX-XXX. DOI: XX.XXXX/XXXXX.XXXX.XXXXXXX
+% \end{enumerate}
+% }
+\vspace{-6mm}
+
+\section{\textbf{Skills}}
+\vspace{-0.4mm}
+ \resumeHeadingSkillStart
+  \resumeSubItem{Programming Languages:}
+    {Python, Java, C}
+  \resumeSubItem{Web Technologies:}
+    {HTML, CSS, Responsive Design}
+  \resumeSubItem{CSS Frameworks:}
+    {Bootstrap, Tailwind CSS}
+  \resumeSubItem{Android Development:}
+    {Flutter}
+  \resumeSubItem{Database Systems:}
+    {Excel, SQL, NoSQL(MongoDB), Firebase, Supabase}
+  \resumeSubItem{Data Science \& Machine Learning:}
+    {Machine Learning, Deep Learning, Generative AI, Large Language Models's (LLMs), Retrieval Augmented Generation (RAG), AgenticAI, NLP, Computer Vision, Object Detection (YOLO)}
+% \resumeSubItem{Cloud Technologies:}
+%     {Cloud Platform 1, Cloud Platform 2, Cloud Platform 3}
+  % \resumeSubItem{DevOps \& Version Control:}
+  %   {Tool 1, Tool 2, Tool 3, Tool 4, Tool 5}
+  \resumeSubItem{Version Control:}
+    {Git, Vercel, GCP}
+  % \resumeSubItem{Specialized Area:}
+  %   {Skill 1, Skill 2, Skill 3, Skill 4}
+  % \resumeSubItem{Mathematical \& Statistical Tools:}
+  %   {Tool 1, Tool 2, Tool 3, Tool 4, Tool 5}
+  \resumeSubItem{Other Tools \& Technologies:}
+    {Langchain, Hugging Face, NLTK, OpenCV, Keras, Tensorflow, Scikit-learn, Pandas, Numpy, Matplotlib, Seaborn, FastAPI, Transformers, PhiData, Playwright, Selenium}
+  % \resumeSubItem{Research Skills:}{Skill 1, Skill 2, Skill 3, Skill 4, Skill 5, Skill 6}
+ \resumeHeadingSkillEnd
+
+\section{\textbf{Honors and Awards}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeProject
+  {Certificate of Recognition}
+  {Pravaah Consulting}
+  {2024}
+  % {{}[\href{https://award-link-a.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+% \resumeItemListStart
+%   \item Brief description of the award and its significance
+%   \item Impact or recognition associated with the award
+% \resumeItemListEnd
+
+% \resumeProject
+%   {Award Name B}
+%   {Awarding Institution/Organization}
+%   {Month Year}
+%   {{}[\href{https://award-link-b.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+% \resumeItemListStart
+%   \item Brief description of the award and its significance
+%   \item Impact or recognition associated with the award
+% \resumeItemListEnd
+
+% \resumeProject
+%   {Competition Achievement}
+%   {Competition Name, Organizing Body}
+%   {Month Year}
+%   {{}[\href{https://competition-link.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+% \resumeItemListStart
+%   \item Specific achievement or rank in the competition
+%   \item Skills or abilities demonstrated through this achievement
+% \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\vspace{-4mm}
+\section{\textbf{Leadership Experience}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+\resumeProject
+  {Member of Techniche Club Core Team}
+  {The Neotia University}
+  {Mar 2024 - Jan 2025}
+  % {{}[\href{https://organization-a-link.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+  {}
+\resumeItemListStart
+  \item For the first time, organized Hackathons and Ideathons at my University.
+  % \item Quantifiable impact or improvement made during tenure
+  % \item Initiative taken or project 
+\resumeItemListEnd
+
+\resumeProject
+  {Head of Technical Team of Techniche Club}
+  {The Neotia University}
+  {Mar 2024 - Jan 2025}
+  % {{}[\href{https://organization-b-link.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+  {}
+\resumeItemListStart
+  \item Led the technical team of 5 members.
+  \item Organized successfully, Parikalpana 2024.
+  \item Headed the Technical team in Parikalpana.
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\vspace{-6mm}
+
+% \section{\textbf{Volunteer Experience}}
+% \vspace{-0.4mm}
+% \resumeSubHeadingListStart
+% \resumeProject
+%   {Volunteer Role A}
+%   {Organization Name}
+%   {Month Year - Month Year}
+%   {{}[\href{https://volunteer-org-a-link.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+% \resumeItemListStart
+%   \item Key responsibility or contribution in this role
+%   \item Impact of your volunteer work
+%   \item Skills developed or applied during this experience
+% \resumeItemListEnd
+
+% \resumeProject
+%   {Volunteer Role B}
+%   {Organization Name}
+%   {Month Year - Present}
+%   {{}[\href{https://volunteer-org-b-link.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+% \resumeItemListStart
+%   \item Key responsibility or contribution in this role
+%   \item Impact of your volunteer work
+%   \item Skills developed or applied during this experience
+% \resumeItemListEnd
+
+% \resumeSubHeadingListEnd
+% \vspace{-6mm}
+
+% \section{\textbf{Professional Memberships}}
+% \vspace{-0.4mm}
+% \resumeSubHeadingListStart
+% \resumePOR{Professional Organization A}
+%     {, Membership ID: XXXXXXXX}
+%     {Month Year - Present}
+% \resumePOR{Professional Organization B}
+%     {, \href{https://membership-certificate-link.com}{Membership ID: XXXXXXXX}}
+%     {Month Year - Present}
+% \resumePOR{Professional Organization C}
+%     {, \href{https://membership-certificate-link.com}{Membership ID: XXXXXXXX}}
+%     {Month Year - Present}
+
+% \resumeSubHeadingListEnd
+% \vspace{-6mm}
+
+% \section{\textbf{Certifications}}
+% \vspace{-0.2mm}
+% \resumeSubHeadingListStart
+% \resumePOR{}{\href{https://portfolio-wheat-nine-42.vercel.app/certificate.html}{
+% \textbf{Hands-on workshop on R Language and Application of Advanced R in Business Analytics - AILABS}
+% \textbf{HTML and CSS Certification - Udemy}
+% \textbf{Python Certification - GUVI}
+% \textbf{Machine Learning Certification - Coursera}
+% \textbf{Advanced Learning Algorithm - Coursera}
+% \textbf{Unsupervised Learning, Recommenders, Reinforcement Learning - Coursera}
+% \textbf{Introduction to Natural Language Processing - Infosys}
+% \resumePOR
+%   {\href{https://www.credential.net/profile/laxminarayansahu193675/wallet?_gl=1*185rgy8*_gcl_au*MTYyNDY1NzEyNS4xNzQ4Mjg0NTkz*_ga*MTU3Mzc1MDAwOC4xNzQ4Mjg0NTk0*_ga_FSDJZHHBH0*czE3NDgyODQ1OTMkbzEkZzAkdDE3NDgyODQ1OTMkajYwJGwwJGgxNTI4NjE3NDM4JGRVU2t5MFMxWmJfa2JIY1A2bmtFakZxbmRrekttVlFmdFR3}
+%   {\textbf{Databricks Certifications}}}
+\section{\textbf{Certifications}}
+\vspace{-0.2mm}
+\resumeSubHeadingListStart
+
+\resumePOR
+  {\href{https://portfolio-wheat-nine-42.vercel.app/certificate.html}
+  {\textbf{Hands-on Workshop on R Language and Application of Advanced R in Business Analytics – AILABS}}}
+  {}
+  {}
+\resumePOR
+  {\href{https://portfolio-wheat-nine-42.vercel.app/certificate.html}
+  {\textbf{HTML and CSS Certification – Udemy}}}
+  {}
+{}
+\resumePOR
+  {\href{https://portfolio-wheat-nine-42.vercel.app/certificate.html}
+  {\textbf{Python Certification – GUVI}}}
+  {}
+{}
+\resumePOR
+  {\href{https://portfolio-wheat-nine-42.vercel.app/certificate.html}
+  {\textbf{Machine Learning Certification – Coursera}}}
+  {}
+{}
+\resumePOR
+  {\href{https://portfolio-wheat-nine-42.vercel.app/certificate.html}
+  {\textbf{Advanced Learning Algorithm – Coursera}}}
+  {}
+{}
+\resumePOR
+  {\href{https://portfolio-wheat-nine-42.vercel.app/certificate.html}
+  {\textbf{Unsupervised Learning, Recommenders, Reinforcement Learning – Coursera}}}
+  {}
+{}
+\resumePOR
+  {\href{https://portfolio-wheat-nine-42.vercel.app/certificate.html}
+  {\textbf{Introduction to Natural Language Processing – Infosys}}}
+  {}
+{}
+\resumePOR
+  {\href{https://www.credential.net/profile/laxminarayansahu193675/wallet}
+  {\textbf{Databricks Certifications}}}
+  {}
+{}
+\resumeSubHeadingListEnd
+
+
+% }}{Month Year}
+% \resumePOR{}{
+% \textbf{Certifying Body:} {{\href{https://certification-link-b.com}{Certification B}}}}{Month Year}
+% \resumePOR{}{
+% \textbf{Certifying Body:} {{\href{https://certification-link-c.com}{Certification C}}}}{Month Year}
+% \resumePOR{}{\href{https://certification-link-d.com}{
+% \textbf{Certification D}
+% }}{Month Year}
+% \resumeSubHeadingListEnd
+
+\vspace{-4mm}
+
+\section{\textbf{Additional Information}}
+\vspace{-0.4mm}
+\small{
+\textbf{Languages:} English (Medium), Hindi (Medium), Odia (Medium)
+
+\textbf{Interests:} Solving Rubik's Cube, Travelling, Biking, Exploring New Things, Vlogging.
+}
+\vspace{-4mm}
+
+
+% \section{\textbf{References}}
+% \vspace{-0.2mm}
+% \small{
+% \begin{enumerate}[leftmargin=*,labelsep=2mm]
+% \item \textbf{Reference Person 1}\\
+%    Job Title, Department\\
+%    Organization/Institution Name\\
+%    Email: email1@example.com\\
+%    Phone: +X-XXX-XXX-XXXX\\
+%    \textit{Relationship: [e.g., Thesis Advisor, Manager, etc.]}
+
+% \item \textbf{Reference Person 2}\\
+%    Job Title, Department\\
+%    Organization/Institution Name\\
+%    Email: email2@example.com\\
+%    Phone: +X-XXX-XXX-XXXX\\
+%    \textit{Relationship: [e.g., Project Supervisor, Colleague, etc.]}
+
+% \item \textbf{Reference Person 3}\\
+%    Job Title, Department\\
+%    Organization/Institution Name\\
+%    Email: email3@example.com\\
+%    Phone: +X-XXX-XXX-XXXX\\
+%    \textit{Relationship: [e.g., Mentor, Collaborator, etc.]}
+% \end{enumerate}
+% }
+
+\end{document}
